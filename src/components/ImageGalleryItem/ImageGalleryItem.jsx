@@ -1,13 +1,11 @@
 import cl from './ImageGalleryItem.module.css';
 import React from "react";
-// import { nanoid } from "nanoid";
 
-// import Skeleton from "../Skeleton";
-export const ImageGalleryItem = ({ id, webformatURL, tags}) => {
-  // console.log(largeImageURL);
+export const ImageGalleryItem = ({ id, webformatURL, largeImageURL, tags}) => {
+  
   return (
     <li className = {cl.imageGalleryItem} key = {id} >
-    <img className = {cl.imageGalleryItem_image} id = {id} src = {webformatURL} alt={tags} />
+    <img className = {cl.imageGalleryItem_image} id = {largeImageURL} src = {webformatURL} alt={tags} />
     </li>
   );
 }

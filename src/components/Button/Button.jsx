@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import cl from './Button.module.css';
 export class Button extends Component {
-  state = {    
+  state = {
     isHidden: true,
   }
 
   omClick = event => {
-    event.preventDefault();    
+    event.preventDefault();
     this.props.onClick();
-    this.reset();       
+    this.reset();
   };
 
   render () {

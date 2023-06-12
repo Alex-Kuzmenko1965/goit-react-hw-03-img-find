@@ -3,7 +3,7 @@ import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 export const ImageGallery = ({ currentPage, hits, totalPages, error, status, STATUS, openModal }) => {
-  if (status === STATUS.PENDING) {      
+  if (status === STATUS.PENDING) {
     return <p>Loading...</p>;
   }
 

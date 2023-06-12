@@ -49,7 +49,7 @@ export default class App extends Component {
       
       this.setState((prevState) => ({
         hits: [...prevState.hits, ...data.hits],
-        totalPages: Math.ceil(data.totalHits / limit),        
+        totalPages: Math.ceil(data.totalHits / limit),
         status: STATUS.RESOLVED,
         error: null,
       }));
@@ -64,23 +64,19 @@ export default class App extends Component {
       searchQuery: searchQuery,
       hits: [],
       currentPage: 1,
-    });    
+    });
   };
 
-  handleLoadMore = () => {    
-    this.setState((prevState) => ({ currentPage: prevState.currentPage + 1 }));    
+  handleLoadMore = () => {
+    this.setState((prevState) => ({ currentPage: prevState.currentPage + 1 }));
   };
 
   openModal = event => {
-    const { hits } = this.state;        
-    const hit = hits.find(hit => hit.id === Number(event.target.id));    
-    const largeImageURL = hit.largeImageURL;
-    console.log(largeImageURL);
-    this.setState({ largeImageURL: largeImageURL });
+    this.setState({ largeImageURL: event.target.id });
     this.handleModal();
   }
 
-  handleModal = () => {    
+  handleModal = () => {
     this.setState((prevState) => ({
       isModalOpen: !prevState.isModalOpen,
     }));
@@ -92,11 +88,11 @@ export default class App extends Component {
     hits.length !== 0 && currentPage < totalPages;
     
     return (
-      <>          
+      <>   
         <Searchbar
         searchQuery = {searchQuery}
         onChange = {this.handleSearchChange}
-        onSubmit = {this.handleFormSubmit} />      
+        onSubmit = {this.handleFormSubmit} />
         <ImageGallery 
           currentPage = {currentPage}
           totalPages = {totalPages}
@@ -111,7 +107,7 @@ export default class App extends Component {
           disabled={status === STATUS.PENDING ? true : false}
         >
           {status === STATUS.PENDING ? "Loading..." : "Load More"}
-        </Button>        
+        </Button>
         )}
         {isModalOpen && (
           <Modal
