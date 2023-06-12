@@ -26,31 +26,14 @@ export default class App extends Component {
     largeImageURL: "",
   };
   
-  componentDidMount() {
-    this.fetchGallery();
-    // console.log(this.state.hits);
-    window.addEventListener("keydown", this.closeOnEsc);
-    document.body.style.overflow = "hidden";
-  }  
+   
   
   componentDidUpdate(_, prevState) {
     const { searchQuery, currentPage } = this.state;
     
-    if (prevState.searchQuery !== searchQuery) {
-      this.setState({
-        hits: [],
-        currentPage: 1,
-      });
+    if (prevState.searchQuery !== searchQuery || prevState.currentPage !== currentPage) {      
       this.fetchGallery();
     }
-    if (prevState.currentPage !== currentPage) {
-      this.fetchGallery();
-    }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("keydown", this.closeOnEsc);
-    document.body.style.overflow = "visible";
   }
 
   fetchGallery = async () => {
@@ -78,20 +61,16 @@ export default class App extends Component {
     }
   };
  
-  handleSearchChange = event => {    
-    this.setState({ searchQuery: event.target.value });
-    console.log(this.state.searchQuery);
-  };
-
   handleFormSubmit = searchQuery => {
-    this.setState({ searchQuery });
-    console.log(searchQuery);
+    this.setState({
+      searchQuery: searchQuery,
+      hits: [],
+      currentPage: 1,
+    });    
   };
 
-  handleLoadMore = () => {
-    const {currentPage} = this.state;
-    this.setState((prevState) => ({ currentPage: prevState.currentPage + 1 }));
-    console.log('currentPage+', currentPage);
+  handleLoadMore = () => {    
+    this.setState((prevState) => ({ currentPage: prevState.currentPage + 1 }));    
   };
 
   openModal = event => {
@@ -102,21 +81,7 @@ export default class App extends Component {
     this.setState({ largeImageURL: largeImageURL });
     this.handleModal();
   }
-
-  closeOnEsc = (e) => {
-    if (e.code === "Escape") {
-      this.handleModal();
-      console.log("ESC");
-    }
-  };
-  
-  handleBackdropClick = (e) => {
-    if (e.currentTarget === e.target) {
-      this.handleModal();
-      console.log("Backdrop");
-    }
-  };
-
+    
   handleModal = () => {    
     this.setState((prevState) => ({
       isModalOpen: !prevState.isModalOpen,
