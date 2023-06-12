@@ -26,8 +26,6 @@ export default class App extends Component {
     largeImageURL: "",
   };
   
-   
-  
   componentDidUpdate(_, prevState) {
     const { searchQuery, currentPage } = this.state;
     
@@ -81,7 +79,7 @@ export default class App extends Component {
     this.setState({ largeImageURL: largeImageURL });
     this.handleModal();
   }
-    
+
   handleModal = () => {    
     this.setState((prevState) => ({
       isModalOpen: !prevState.isModalOpen,
@@ -119,7 +117,7 @@ export default class App extends Component {
           <Modal
           largeImageURL={this.state.largeImageURL}
           openModal={this.openModal}
-          handleBackdropClick={this.handleBackdropClick}
+          handleModal={this.handleModal}
           />
         )}
       </>

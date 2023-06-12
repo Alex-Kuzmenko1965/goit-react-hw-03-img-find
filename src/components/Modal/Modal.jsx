@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import cl from './Modal.module.css';
 
 export class Modal extends Component {
+  
   componentDidMount() {
     window.addEventListener("keydown", this.closeOnEsc);
     document.body.style.overflow = "hidden";
@@ -15,14 +16,14 @@ export class Modal extends Component {
 
   closeOnEsc = (e) => {
     if (e.code === "Escape") {
-      this.handleModal();
+      this.props.handleModal();
       console.log("ESC");
     }
   };
   
   handleBackdropClick = (e) => {
     if (e.currentTarget === e.target) {
-      this.handleModal();
+      this.props.handleModal();
       console.log("Backdrop");
     }
   };
