@@ -72,7 +72,7 @@ export default class App extends Component {
         status: STATUS.RESOLVED,
         error: null,
       }));
-      // console.log('totalPages:', totalPages);
+      
     } catch (error) {
       this.setState({ error: error.message, status: STATUS.REJECTED });
     }

@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-03-image-finder",
+  "name": "goit-react-hw-03-img-find",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Alex-Kuzmenko1965.github.io/goit-react-hw-03-image-finder/",
+  "homepage": "https://Alex-Kuzmenko1965.github.io/goit-react-hw-03-img-find/",
   "dependencies": {
     "@emotion/styled": "^11.11.0",
     "@testing-library/jest-dom": "^5.16.3",
